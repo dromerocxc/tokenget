@@ -14,10 +14,10 @@ async function getToken(peticion, respuesta){
     let datos =  {"scope": "user", "external_id": peticion.body.external_id}
 
     var token = jwt.sign(datos, SECRET, { header:  {kid: KEY_ID}  });
-    console.log(peticion.body)
-    console.log(token)
+    //console.log(peticion.body)
+    //console.log(token)
     respuesta.send("La ruta / solicitada con: " + agenteDeUsuario);
-    return respuesta.end()
+    res.send(token)
 }
 
 
