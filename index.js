@@ -16,8 +16,8 @@ async function getToken(peticion, respuesta){
     var token = jwt.sign(datos, SECRET, { header:  {kid: KEY_ID}  });
     //console.log(peticion.body)
     //console.log(token)
-    respuesta.send("La ruta / solicitada con: " + agenteDeUsuario);
-    res.send(token)
+    //respuesta.send("La ruta / solicitada con: " + agenteDeUsuario);
+    respuesta.send(token)
 }
 
 
