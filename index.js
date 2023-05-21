@@ -2,7 +2,7 @@ var jwt = require('jsonwebtoken');
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-const PORT = 3000
+
 
 
 async function getToken(peticion, respuesta){
