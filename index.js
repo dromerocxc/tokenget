@@ -14,10 +14,10 @@ app.use(bodyParser.json())
 app.post("/get-token", function(peticion, respuesta) {
     let SECRET = 'uNQEUqxaldxPY8NNWvENnSaKkN25wZw45H8PoFy1yLi45wM6DGLt2SxWbwtl_-Zz37WdUmfPImmTOIKigKVssA'
     let KEY_ID = 'app_64667c1c10224c827ee7e161'
-    let datos =  {"scope": "user", "external_id": peticion.body.external_id}
+    let datos =  {"scope": "user", "external_id": peticion.body.external_id, "email": peticion.body.email}
     var token = jwt.sign(datos, SECRET, { header:  {kid: KEY_ID}  });
     console.log(peticion.body.external_id)
-    return respuesta.send(token)
+    return respuesta.send(JSON.stringify({ token }))
 });
 
 app.use(cors({credentials: true,origin: true}));
@@ -28,3 +28,4 @@ app.listen(process.env.PORT || 3000, function() {
 
 
 
+ 
