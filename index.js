@@ -12,8 +12,10 @@ app.get("/", function(req, res) {res.send(courses); });
 app.use(bodyParser.json())
 
 app.post("/get-token", function(peticion, respuesta) {
-    let SECRET = 'uNQEUqxaldxPY8NNWvENnSaKkN25wZw45H8PoFy1yLi45wM6DGLt2SxWbwtl_-Zz37WdUmfPImmTOIKigKVssA'
-    let KEY_ID = 'app_64667c1c10224c827ee7e161'
+    //SECRET CON-INTEGRATION
+    let SECRET = 'XOi-E3aAgHVIys7ns001Gbi6L-9Qy-uRuoxP49Cdagv7VbAw3wx3pi1AnAp1hgD-goc8-VXI8ZhaES6P5x6Tvg'
+    let KEY_ID = 'app_646ba6392a1425548c511013'
+
     let datos =  {"scope": "user", "external_id": peticion.body.external_id}
     var token = jwt.sign(datos, SECRET, { header:  {kid: KEY_ID}  });
     console.log(peticion.body.external_id)
