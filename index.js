@@ -13,8 +13,8 @@ app.use(bodyParser.json())
 
 app.post("/get-token", function(peticion, respuesta) {
     //SECRET CON-INTEGRATION
-    let SECRET = 'XOi-E3aAgHVIys7ns001Gbi6L-9Qy-uRuoxP49Cdagv7VbAw3wx3pi1AnAp1hgD-goc8-VXI8ZhaES6P5x6Tvg'
-    let KEY_ID = 'app_646ba6392a1425548c511013'
+    let SECRET = '0hC69Rhgk5pvDH_cZf6bBPthC4CgkOddDMATmiHy6wMuk1UA9yAV1jQRW1lpZDaIRkM6U7-SAmulTk8CA0Qllw'
+    let KEY_ID = 'app_6470dbd0ebec40dd8e79d04c'
 
     let datos =  {"scope": "user", "external_id": peticion.body.external_id}
     var token = jwt.sign(datos, SECRET, { header:  {kid: KEY_ID}  });
