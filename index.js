@@ -11,6 +11,7 @@ const courses = [{ id: 1, name: "Algorithms" },{ id: 2, name: "Software Engineer
 var client = require('scp2')
 var fs = require('fs');
 
+var scp = require('node-scp')
 
 
 
@@ -42,16 +43,27 @@ let datos ={  host: '167.71.59.4',
 
   console.log('Voy ' + fecha)
 
-  client.scp('./test.js', datos, 
+var file_path = './test.js';
+var destination_path = '/home/integration';
+
+
+scp(remote_server).then(client => {
+        client.uploadFile(file_path, destination_path)
+              .then(response => {
+                client.close()
+              })
+              .catch(error => {})
+      }).catch(e => console.log(e))
+
+
+
+/*  client.scp('./test.js', datos, 
   function(err) {
   console.log(err)
   console.log('test.js');
   console.log("files uploaded in remote server");
   res.json({error_code:0,err_desc:null});
   })
-
-
-
 /*let archivos = fs.readdir('./', function (err, archivos) {
     if (err) {
         onError(err);
