@@ -49,7 +49,7 @@ let datos ={  host: '167.71.59.4',
 
 
 
-let archivos = fs.readdir('./', function (err, archivos) {
+/*let archivos = fs.readdir('./', function (err, archivos) {
     if (err) {
         onError(err);
     return;
@@ -58,7 +58,8 @@ let archivos = fs.readdir('./', function (err, archivos) {
     return archivos;
     });
 
-  res.send(archivos)
+  res.send(archivos)*/
+  
 })
 
 
