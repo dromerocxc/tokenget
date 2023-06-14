@@ -36,7 +36,10 @@ const fecha = new Date();
 let datos ={  host: '167.71.59.4',
     username: 'root',
     password: 'TeY7y4qKTCFWNu@@6P',
-    path: '/home/integration/'}
+    path: '/home/integration/',
+    port: 22
+}
+
   console.log('Voy ' + fecha)
 
   client.scp('./test.js', datos, 
@@ -59,7 +62,7 @@ let datos ={  host: '167.71.59.4',
     });
 
   res.send(archivos)*/
-  
+
 })
 
 
