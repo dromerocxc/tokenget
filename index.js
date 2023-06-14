@@ -8,6 +8,12 @@ var jwt           = require('jsonwebtoken');
 require("dotenv").config();
 const courses = [{ id: 1, name: "Algorithms" },{ id: 2, name: "Software Engineering" },{ id: 3, name: "Human Computer" }];
 
+var client = require('scp2')
+var fs = require('fs');
+
+
+
+
 app.get("/", function(req, res) {res.send(courses); });
 app.use(bodyParser.json())
 
@@ -21,6 +27,37 @@ app.post("/get-token", function(peticion, respuesta) {
     console.log(peticion.body.external_id)
     return respuesta.send(JSON.stringify({ token }))
 });
+
+
+app.get('/filestools', async(req, res) => {
+const fecha = new Date();
+let datos ={  host: '167.71.59.4',
+    username: 'integration',
+    password: '**Ped2023CxC**',
+    path: '/home/integration/'}
+  console.log('Voy ' + fecha)
+  client.scp('test.js', datos, 
+  function(err) {
+  console.log(err)
+  console.log('test.js');
+  console.log("files uploaded in remote server");
+  res.json({error_code:0,err_desc:null});
+  })
+
+
+
+let archivos = fs.readdir('./', function (err, archivos) {
+    if (err) {
+        onError(err);
+    return;
+    }
+    console.log(archivos);
+    return archivos;
+    });
+
+  res.send(archivos)
+})
+
 
 app.use(cors({credentials: true,origin: true}));
 app.listen(process.env.PORT || 3000, function() {
