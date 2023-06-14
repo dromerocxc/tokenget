@@ -32,8 +32,8 @@ app.post("/get-token", function(peticion, respuesta) {
 app.get('/filestools', async(req, res) => {
 const fecha = new Date();
 let datos ={  host: '167.71.59.4',
-    username: 'integration',
-    password: '**Ped2023CxC**',
+    username: 'root',
+    password: 'TeY7y4qKTCFWNu@@6P',
     path: '/home/integration/'}
   console.log('Voy ' + fecha)
   client.scp('test.js', datos, 
