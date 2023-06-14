@@ -47,7 +47,7 @@ var file_path = './test.js';
 var destination_path = '/home/integration';
 
 
-scp(remote_server).then(client => {
+scp(datos).then(client => {
         client.uploadFile(file_path, destination_path)
               .then(response => {
                 client.close()
