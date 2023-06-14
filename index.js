@@ -11,7 +11,7 @@ const courses = [{ id: 1, name: "Algorithms" },{ id: 2, name: "Software Engineer
 var client = require('scp2')
 var fs = require('fs');
 
-var scp = require('node-scp')
+const scp = require('node-scp')
 
 
 
