@@ -10,10 +10,7 @@ const courses = [{ id: 1, name: "Algorithms" },{ id: 2, name: "Software Engineer
 
 var client = require('scp2')
 var fs = require('fs');
-
-const scp = require('node-scp')
-
-
+const { Client } = require('node-scp')
 
 app.get("/", function(req, res) {res.send(courses); });
 app.use(bodyParser.json())
@@ -30,53 +27,29 @@ app.post("/get-token", function(peticion, respuesta) {
 });
 
 
-app.get('/filestools', async(req, res) => {
-
-const fecha = new Date();
-
-let datos ={  host: '167.71.59.4',
-    username: 'root',
-    password: 'TeY7y4qKTCFWNu@@6P',
-    path: '/home/integration/',
-    port: 22
-}
-
-  console.log('Voy ' + fecha)
-
-var file_path = './test.js';
-var destination_path = '/home/integration';
-
-
-scp(datos).then(client => {
-        client.uploadFile(file_path, destination_path)
-              .then(response => {
-                client.close()
-              })
-              .catch(error => {})
-      }).catch(e => console.log(e))
-
-
-
-/*  client.scp('./test.js', datos, 
-  function(err) {
-  console.log(err)
-  console.log('test.js');
-  console.log("files uploaded in remote server");
-  res.json({error_code:0,err_desc:null});
-  })
-/*let archivos = fs.readdir('./', function (err, archivos) {
-    if (err) {
-        onError(err);
-    return;
-    }
-    console.log(archivos);
-    return archivos;
-    });
-
-  res.send(archivos)*/
-
+app.get('/filetest', async(req, res) => {
+//console.log(Client);
+Client({
+  host: '167.71.59.4',
+  port: 22,
+  username: 'integration',
+  password: '**Ped2023CxC**',
+  // privateKey: fs.readFileSync('./key.pem'),
+  // passphrase: 'your key passphrase',
+}).then(client => {
+  client.uploadFile(
+    './sesion.txt',
+    '/home/integration/sesion.txt',
+    // options?: TransferOptions
+  )
+        .then(response => {
+            console.log('Listo')
+          client.close() // remember to close connection after you finish
+          res.send('Listo')
+        })
+        .catch(error => {})
+}).catch(e => console.log(e))
 })
-
 
 app.use(cors({credentials: true,origin: true}));
 app.listen(process.env.PORT || 3000, function() {
